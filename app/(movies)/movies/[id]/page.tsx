@@ -16,22 +16,16 @@ export async function generateMetadata({params: {id}}: {params: {id: string}}){
     }
 }
 
-export default async function MoviePage({
-    params: { id },
-}: {
-    params: { id: string };
-}) {
-    return (
-        <div>
-            <Suspense fallback={<h1>Loading Movie Info</h1>}>
-                <MovieInfos id={id} />
-            </Suspense>
-            <Suspense fallback={<h1>Loading Movie Video</h1>}>
-                <MovieVideos id={id} />
-            </Suspense>
-            <Suspense fallback={<h1>Loading Movie Porvider</h1>}>
-                <MovieProviders id={id} />
-            </Suspense>
-        </div>
-    );
+export default function MoviePage({params:{id}}: {params: {id: string}}){
+    return <div>
+        <Suspense fallback={<h1>Loading Movie Info</h1>}>
+            <MovieInfos id={id}/>
+        </Suspense>
+        <Suspense fallback={<h1>Loading Movie Video</h1>}>
+            <MovieVideos id={id}/>
+        </Suspense>
+        <Suspense fallback={<h1>Loading Movie Porvider</h1>}>
+            <MovieProviders id={id}/>
+        </Suspense>
+    </div>
 }
