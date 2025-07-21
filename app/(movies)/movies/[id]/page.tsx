@@ -1,15 +1,15 @@
 import { Suspense } from "react";
-// import { API_URL } from "../../../(home)/page";
 import MovieInfos from "../../../../components/movie-info";
 import MovieVideos from "../../../../components/movie-videos";
 import MovieProviders from "../../../../components/movie-providers";
+import { API_URL } from "../../../constant";
 
 interface IParams{
     params: {id: Promise<string>};
 }
 
 async function getMovie(id: string){
-    const response = await fetch(`${process.env.API_URL}/${id}`);
+    const response = await fetch(`${API_URL}/${id}`);
     return response.json();
 }
 
