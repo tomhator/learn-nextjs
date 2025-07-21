@@ -1,13 +1,6 @@
 import { API_URL } from '../app/constant';
 import styles from '../styles/movie-providers.module.css'
 
-interface IProvider {
-  link?: string;
-  buy?: any[];
-  rent?: any[];
-  flatrate?: any[];
-}
-
 async function getProviders(id: string){
     const response = await fetch(`${API_URL}/${id}/providers`)
     return response.json();
@@ -15,56 +8,59 @@ async function getProviders(id: string){
 
 export default async function MovieProviders({id}: {id:string}){
     const providers = await getProviders(id);
-    const {link, ...provider} = {
-        ...{link: [], buy: [], rent: [], flatrate: []},
-        ...providers.CA,
-    } as IProvider;
+    const caProviders = providers.CA;
 
-    console.log()
+    const hasBuy = caProviders?.buy?.length > 0;
+    const hasRent = caProviders?.rent?.length > 0;
+    const hasFlatrate = caProviders?.flatrate?.length > 0;
+
+    if (!caProviders || (!hasBuy && !hasRent && !hasFlatrate)) {
+        return null;
+    }
 
     return (
         <div className={styles.providerWrap}>
             <h5>Providers</h5>
             <div className={styles.providerBox}>
-                <div className={styles.providerItem}>
-                    <h6>Buy</h6>
-                    {providers.CA.buy
-                        ? <ul className={styles.provideList}>
-                            {providers.CA.buy.map(buyFrom =>
-                                <li>
+                {hasBuy && (
+                    <div className={styles.providerItem}>
+                        <h6>Buy</h6>
+                        <ul className={styles.provideList}>
+                            {caProviders.buy.map(buyFrom =>
+                                <li key={buyFrom.provider_id}>
                                     <img src={buyFrom.logo_path} alt={buyFrom.provider_name} />
                                     <span>{buyFrom.provider_name}</span>
                                 </li>
                             )}
                         </ul>
-                    : 'No Buy'}
-                </div>
-                <div className={styles.providerItem}>
-                    <h6>Rent</h6>
-                    {providers.CA.buy
-                        ? <ul className={styles.provideList}>
-                            {providers.CA.buy.map(rentFrom =>
-                                <li>
+                    </div>
+                )}
+                {hasRent && (
+                    <div className={styles.providerItem}>
+                        <h6>Rent</h6>
+                        <ul className={styles.provideList}>
+                            {caProviders.rent.map(rentFrom =>
+                                <li key={rentFrom.provider_id}>
                                     <img src={rentFrom.logo_path} alt={rentFrom.provider_name} />
                                     <span>{rentFrom.provider_name}</span>
                                 </li>
                             )}
                         </ul>
-                    : 'No Rent'}
-                </div>
-                <div className={styles.providerItem}>
-                    <h6>Flat Rate</h6>
-                    {providers.CA.buy
-                        ? <ul className={styles.provideList}>
-                            {providers.CA.buy.map(flatFrom =>
-                                <li>
+                    </div>
+                )}
+                {hasFlatrate && (
+                    <div className={styles.providerItem}>
+                        <h6>Flat Rate</h6>
+                        <ul className={styles.provideList}>
+                            {caProviders.flatrate.map(flatFrom =>
+                                <li key={flatFrom.provider_id}>
                                     <img src={flatFrom.logo_path} alt={flatFrom.provider_name} />
                                     <span>{flatFrom.provider_name}</span>
                                 </li>
                             )}
                         </ul>
-                    : 'No Flat Rate'}
-                </div>
+                    </div>
+                )}
             </div>
             
         </div>
