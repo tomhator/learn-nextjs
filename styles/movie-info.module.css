@@ -1,0 +1,45 @@
+.movieInfo{
+    display: flex;
+    gap: 30px;
+    padding: 0 30px 30px;
+
+    .image{
+        width: 40%;
+        max-width: 600px;
+        border-radius: 10px;
+        overflow: hidden;
+
+        img{
+            width: 100%;
+        }
+    }
+    .info{
+        flex: 1;
+        h1{
+            font-size: 25px;
+            font-weight: 600;
+            margin: 0 0 10px;
+        }
+        h3{
+            font-size: 15px;
+            font-weight: 700;
+            color: greenyellow;
+            margin: 0 0 50px;
+        }
+        p{
+            line-height: 1.4;
+            font-size: 16px;
+            margin: 0 0 30px;
+        }
+        a{
+            display: inline-flex;
+            padding: 12px 20px;
+            border-radius: 30px;
+            background: #163f81;
+            &:hover{
+                text-decoration: none;
+                background-color: #082657;
+            }
+        }
+    }
+}

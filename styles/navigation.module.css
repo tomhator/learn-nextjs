@@ -1,0 +1,27 @@
+.nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* background-color: #193b7a; */
+    background-color: rgba(39, 71, 135, 0.15);
+    backdrop-filter: blur(13px);
+    z-index: 9999;
+
+    .navList{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 23px 17px;
+        justify-content: center;
+
+        .navList__item{
+            a{
+                font-weight: 500;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}

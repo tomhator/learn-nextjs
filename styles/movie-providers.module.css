@@ -1,0 +1,35 @@
+.providerWrap{
+    padding: 30px 30px 30px;
+    h5{
+        font-size: 18px;
+        margin: 0 0 10px;
+        font-weight: 700;
+    }
+    .providerBox{
+        display: flex;
+        gap: 30px;
+    }
+    .providerItem{
+        h6{
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+    }
+    .provideList{
+        display: flex;
+        gap: 30px;
+
+        li{
+            flex: 1;
+            text-align: center;
+            img{
+                width: 100%;
+                border-radius: 100px;
+            }
+            span{
+                font-size: 12px;
+            }
+        }
+    }
+}

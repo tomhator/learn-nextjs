@@ -1,0 +1,9 @@
+.videoList{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    iframe{
+        width: 100%;
+        aspect-ratio: 1.6;
+    }
+}
