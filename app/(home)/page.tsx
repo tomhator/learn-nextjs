@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from '../../styles/home.module.css'
 import Movie from "../../components/movie";
 
@@ -6,7 +5,7 @@ export const metadata ={
     title: "Home",
 }
 
-export const API_URL = 'https://nomad-movies.nomadcoders.workers.dev/movies';
+export const API_URL = process.env.API_URL;
 
 async function getMovie(){
     // await new Promise((resolve) => setTimeout(resolve, 1500))

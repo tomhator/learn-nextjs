@@ -1,6 +1,6 @@
-import { API_URL } from "../app/(home)/page";
+// import { API_URL } from "../app/(home)/page";
 import styles from '../styles/movie-providers.module.css'
-import Link from "next/link";
+// import Link from "next/link";
 
 interface IProvider {
   link?: string;
@@ -10,7 +10,7 @@ interface IProvider {
 }
 
 async function getProviders(id: string){
-    const response = await fetch(`${API_URL}/${id}/providers`)
+    const response = await fetch(`${process.env.API_URL}/${id}/providers`)
     return response.json();
 }
 

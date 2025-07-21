@@ -1,8 +1,8 @@
-import { API_URL } from "../app/(home)/page";
+// import { API_URL } from "../app/(home)/page";
 import styles from '../styles/moive-credits.module.css'
 
 async function getCredit(id: string){
-    const response = await fetch(`${API_URL}/${id}/credits`)
+    const response = await fetch(`${process.env.API_URL}/${id}/credits`)
     return response.json();
 }
 
